@@ -2,14 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.js",
-      "use": "@vercel/node"
+      "src": "main.py",
+      "use": "@vercel/python"
     }
   ],
+  "build": {
+    "env": {
+      "DATABASE_URL": "<REPLACE_WITH_PROD_DATABASE_URL>"
+    }
+  },
+  "env": {
+    "DATABASE_URL": "<REPLACE_WITH_PROD_DATABASE_URL>",
+    "PYTHONUNBUFFERED": "1"
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app.js"
+      "dest": "main.py"
     }
   ]
 }
